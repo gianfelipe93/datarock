@@ -25,10 +25,6 @@ class Checkout implements CheckoutBase {
   total() {
     return this._products.reduce((total, product) => total + product.price, 0)
   }
-
-  list() {
-    return [...this._products]
-  }
 }
 
 export default Checkout;

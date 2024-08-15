@@ -19,10 +19,10 @@ type BaseDiscount = {
 /**
  * Represents a discount of type X for Y.
  */
-export interface XforYDiscount extends BaseDiscount {
+export type XforYDiscount = {
   discountType: DiscountType.XforY;
   quantityToTriggerDiscount: number;
-}
+} & BaseDiscount
 
 /**
  * Represents a discount over quantity discount.
@@ -32,11 +32,11 @@ export interface XforYDiscount extends BaseDiscount {
  *
  * @public
  */
-export interface DiscountOverQuantityDiscount extends BaseDiscount {
+export type DiscountOverQuantityDiscount = {
   discountType: DiscountType.DiscountOverQuantity;
   minimumQuantity: number;
   discountedPrice: number;
-}
+} & BaseDiscount
 
 /**
  * Represents a bundle discount.
@@ -48,10 +48,10 @@ export interface DiscountOverQuantityDiscount extends BaseDiscount {
  *
  * @public
  */
-export interface BundleDiscount extends BaseDiscount {
+export type BundleDiscount = {
   discountType: DiscountType.Bundle;
   additionalProduct: Product;
-}
+} & BaseDiscount
 
 /**
  * Represents a discount.

@@ -9,64 +9,7 @@ describe('Checkout', () => {
     checkout = new Checkout(getPricingRules());
   });
 
-  describe('list()', () => {
-    it('should return a list of products that have been scanned', () => {
-      const product_1 = APPLE_TV;
-      const product_2 = SUPER_IPAD;
-
-      const expected = [product_1, product_2]
-
-      checkout.scan(product_1);
-      checkout.scan(product_2);
-
-      const products = checkout.list();
-      expect(products).toHaveLength(2);
-
-      expected.forEach(expectedProduct => {
-        expect(products).toContainEqual(expectedProduct);
-      });
-    });
-
-    it('should return a list of products with a VGA since a macos has been scaned', () => {
-      const product_1 = APPLE_TV;
-      const product_2 = MACBOOK_PRO;
-      const product_3: Product = { ...VGA_ADAPTER, price: 0 }
-
-      const expected = [product_1, product_2, product_3]
-
-      checkout.scan(product_1);
-      checkout.scan(product_2);
-
-      const products = checkout.list();
-
-      expect(products).toHaveLength(3);
-
-      expected.forEach(expectedProduct => {
-        expect(products).toContainEqual(expectedProduct);
-      });
-    });
-
-    it('should return a list of products with one VGA for each macos scanned', () => {
-      const product_1 = APPLE_TV;
-      const product_2 = MACBOOK_PRO;
-      const product_3: Product = { ...VGA_ADAPTER, price: 0 }
-
-      const expected = [product_1, product_2, product_2, product_2, product_3, product_3, product_3]
-
-      checkout.scan(product_1);
-      checkout.scan(product_2);
-      checkout.scan(product_2);
-      checkout.scan(product_2);
-
-      const products = checkout.list();
-      expect(products).toHaveLength(7);
-      expected.forEach(expectedProduct => {
-        expect(products).toContainEqual(expectedProduct);
-      });
-    });
-  })
-
-  describe('Instance check', () => {
+  describe('instance check', () => {
     it('should create a new Checkout instance', () => {
       const checkout = new Checkout(getPricingRules());
       expect(checkout).toBeInstanceOf(Checkout);

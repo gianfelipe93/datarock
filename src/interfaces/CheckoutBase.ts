@@ -5,5 +5,4 @@
 interface CheckoutBase {
   scan: (product: Product) => void,
   total: () => number
-  list: () => Product[]
 }
