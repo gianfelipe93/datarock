@@ -1,3 +1,5 @@
+import Product from "./Product";
+
 export enum DiscountType {
   XforY = 'XforY',
   DiscountOverQuantity = 'discountOverQuantity',

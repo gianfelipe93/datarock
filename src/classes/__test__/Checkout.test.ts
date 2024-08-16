@@ -249,14 +249,14 @@ describe('Checkout', () => {
       expect(total).toEqual(2718.95);
     })
 
-    // it('3 should check if product Super IPad scanned in order will get discounted if there is more than the minimum required quantity', () => {
-    //   checkout.scan(MACBOOK_PRO);
-    //   checkout.scan(VGA_ADAPTER);
-    //   checkout.scan(SUPER_IPAD);
+    it('3 should check if product Super IPad scanned in order will get discounted if there is more than the minimum required quantity', () => {
+      checkout.scan(MACBOOK_PRO);
+      checkout.scan(VGA_ADAPTER);
+      checkout.scan(SUPER_IPAD);
 
-    //   const total = checkout.total();
-    //   expect(total).toEqual(1949.98);
-    // })
+      const total = checkout.total();
+      expect(total).toEqual(1949.98);
+    })
   })
 
   describe('total() - Multiple Discounts', () => {
