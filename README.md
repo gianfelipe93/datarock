@@ -1,5 +1,5 @@
 Hi there, hope you are having a good day.
-# Project README
+# Datarock Shopping Cart challenge
 
 In this README, I'm going to talk a bit about the code structure, what I have built, some decisions I made, etc. Stay tuned!
 
