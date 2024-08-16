@@ -25,7 +25,7 @@ src
 index.ts - My understanding is that I don't need to write any code for it because you guys are not going to run it. I hope I am right!!!
 
 eslint.config.mjs - I used eslint to enforce code standards, it makes the code cleaner and more readable.
-
+```
 ## Tests
 
 I used jest to write tests, mostly for two functions: `checkout.total()` and `discountCalculator.applyDiscounts()`.
