@@ -1,3 +1,5 @@
+import Product from "../types/Product"
+
 export const SUPER_IPAD: Product = {
   SKU: 'ipd',
   name: 'Super iPad',
@@ -21,3 +23,5 @@ export const VGA_ADAPTER: Product = {
   name: 'VGA Adapter',
   price: 30.00
 }
+
+export const getCatalog = (): Product[] => ([SUPER_IPAD, MACBOOK_PRO, APPLE_TV, VGA_ADAPTER])

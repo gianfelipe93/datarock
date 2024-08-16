@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "clear && jest",
-    "test:watch": "jest --watch"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
