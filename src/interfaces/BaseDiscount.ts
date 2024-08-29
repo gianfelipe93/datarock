@@ -1,4 +1,4 @@
-import Product from "./Product";
+import Product from "../types/Product";
 
 export enum DiscountType {
   XforY = 'XforY',
@@ -9,36 +9,36 @@ export enum DiscountType {
 /**
  * Represents a base discount.
  *
- * @typedef {Object} BaseDiscount
+ * @interface BaseDiscount
  * @property {DiscountType} discountType - The type of discount.
  * @property {Product} product - The product associated with the discount.
+ * @property {(cart: Product[]) => Product[]} applyDiscount - A function that applies the discount to a cart of products.
  */
-type BaseDiscount = {
+interface BaseDiscount {
   discountType: DiscountType
   product: Product
+  applyDiscount: (cart: Product[]) => Product[]
+}
+
+
+/**
+ * Represents a discount that applies when purchasing a certain quantity of items.
+ * This discount type follows the "X for Y" rule, where a specific quantity triggers the discount.
+ */
+export interface BaseXforYDiscount extends BaseDiscount {
+  discountType: DiscountType.XforY;
+  quantityToTriggerDiscount: number;
 }
 
 /**
- * Represents a discount of type X for Y.
+ * Represents a discount that is applied over a certain quantity of items.
+ * This discount type is a subtype of BaseDiscount.
  */
-export type XforYDiscount = {
-  discountType: DiscountType.XforY;
-  quantityToTriggerDiscount: number;
-} & BaseDiscount
-
-/**
- * Represents a discount over quantity discount.
- *
- * @remarks
- * This interface extends the `BaseDiscount` interface and defines the properties specific to a discount over quantity.
- *
- * @public
- */
-export type DiscountOverQuantityDiscount = {
+export interface BaseDiscountOverQuantityDiscount extends BaseDiscount {
   discountType: DiscountType.DiscountOverQuantity;
   minimumQuantity: number;
   discountedPrice: number;
-} & BaseDiscount
+}
 
 /**
  * Represents a bundle discount.
@@ -50,12 +50,12 @@ export type DiscountOverQuantityDiscount = {
  *
  * @public
  */
-export type BundleDiscount = {
+export interface BaseBundleDiscount extends BaseDiscount {
   discountType: DiscountType.Bundle;
   additionalProduct: Product;
-} & BaseDiscount
+}
 
 /**
  * Represents a discount.
  */
-export type Discount = XforYDiscount | DiscountOverQuantityDiscount | BundleDiscount;
+export type Discount = BaseXforYDiscount | BaseDiscountOverQuantityDiscount | BaseBundleDiscount;

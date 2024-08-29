@@ -1,4 +1,7 @@
-import { Discount, DiscountType } from "../types/Discount"
+import BundleDiscount from "../classes/BundleDiscount"
+import DiscountOverQuantity from "../classes/DiscountOverQuantity"
+import XforYDiscount from "../classes/XforYDiscount"
+import { Discount } from "../interfaces/BaseDiscount"
 import { APPLE_TV, MACBOOK_PRO, SUPER_IPAD, VGA_ADAPTER } from "./catalog"
 
 /**
@@ -7,24 +10,9 @@ import { APPLE_TV, MACBOOK_PRO, SUPER_IPAD, VGA_ADAPTER } from "./catalog"
  * @returns An array of Discount objects representing the pricing rules.
  */
 const getPricingRules = (): Discount[] => {
-  const discount_A: Discount = {
-    discountType: DiscountType.XforY,
-    product: APPLE_TV,
-    quantityToTriggerDiscount: 3
-  }
-
-  const discount_B: Discount = {
-    discountType: DiscountType.DiscountOverQuantity,
-    product: SUPER_IPAD,
-    minimumQuantity: 5,
-    discountedPrice: 499.99
-  }
-
-  const discount_C: Discount = {
-    discountType: DiscountType.Bundle,
-    product: MACBOOK_PRO,
-    additionalProduct: VGA_ADAPTER
-  }
+  const discount_A = new XforYDiscount(APPLE_TV, 3)
+  const discount_B = new DiscountOverQuantity(SUPER_IPAD, 5, 499.99)
+  const discount_C = new BundleDiscount(MACBOOK_PRO, VGA_ADAPTER)
 
   return [discount_A, discount_B, discount_C];
 }

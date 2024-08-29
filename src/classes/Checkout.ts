@@ -1,5 +1,5 @@
-import CheckoutBase from "../interfaces/CheckoutBase";
-import { Discount } from "../types/Discount";
+import CheckoutBase from "../interfaces/BaseCheckout";
+import { Discount } from "../interfaces/BaseDiscount";
 import Product from "../types/Product";
 import DiscountCalculator from "./DiscountCalculator";
 
